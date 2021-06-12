@@ -1,35 +1,30 @@
 .crypto {
-  margin: 4px;
-  border: 1px solid red;
   border-radius: 4px;
   display: flex;
   min-width: 300px;
-  padding: 4px;
+  padding: 12px;
+  cursor: pointer;
+  background: hsl(0, 0%, 93%);
+  box-shadow: 0 0 4px hsla(0, 0%, 0%, 0.3);
+  gap: 16px;
 
   .image-section, .data-section {
     display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
-  .image-section {
-    border: 1px solid green;
-
-    img {
-
-      height: 64px;
-      width: 64px;
-      object-fit: cover;
-    }
+  img {
+    height: 64px;
+    width: 64px;
+    object-fit: cover;
   }
 
   .data-section {
     width: 80%;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid yellow;
+  }
 
-
+  &:hover {
+    transform: scale(1.05);
+    background: hsl(100, 40%, 90%);
   }
 }

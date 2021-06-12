@@ -1,7 +1,5 @@
 .App {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  transition: all 200ms ease-in-out;
 }
 
 * {
@@ -10,7 +8,15 @@
   box-sizing: border-box;
 }
 
-.App h4 {
+.App h1 {
+  padding: 56px 16px;
   text-align: center;
+  background-color: #4DA8DA;
+}
+
+.App main {
+  padding: 16px 0;
+  max-width: 78rem;
+  margin:auto;
 }
 

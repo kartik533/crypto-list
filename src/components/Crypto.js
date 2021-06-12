@@ -3,9 +3,7 @@ import styles from './crypto.module.scss'
 
 const Crypto = (props) => (
     <div className={styles.crypto}>
-        <div className={styles['image-section']}>
-            <img src={props.icon} alt="Coin icon image"/>
-        </div>
+        <img src={props.icon} alt="Coin icon image"/>
         <div className={styles['data-section']}>
             <p><strong>Name:</strong>{props.name}</p>
             <p><strong>Price:</strong>{props.price}</p>
