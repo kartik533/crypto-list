@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Crypto from "./Crypto";
+import styles from './cryptoContainer.module.scss'
 
 const CryptoContainer = () => {
 
@@ -18,12 +19,11 @@ const CryptoContainer = () => {
     return (
         <main>
             {cryptoData.map((coin, index) => (
-                <Crypto name={coin.name} price={coin.price} symbol={coin.symbol} icon={coin.iconUrl} />
+                <Crypto name={coin.name} price={coin.price.slice(0,4)} symbol={coin.symbol} icon={coin.iconUrl} change={coin.change} />
                 )
             )}
         </main>
     );
-
 };
 
 export default CryptoContainer;

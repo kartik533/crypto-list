@@ -7,18 +7,10 @@ const Crypto = (props) => (
             <img src={props.icon} alt="Coin icon image"/>
         </div>
         <div className={styles['data-section']}>
-            <section>
-                <label>Name:</label>
-                <input value={props.name}/>
-            </section>
-            <section>
-                <label>Price:</label>
-                <input value={props.price}/>
-            </section>
-            <section>
-                <label>Symbol:</label>
-                <input value={props.symbol}/>
-            </section>
+            <p><strong>Name:</strong>{props.name}</p>
+            <p><strong>Price:</strong>{props.price}</p>
+            <p><strong>Symbol:</strong>{props.symbol}</p>
+            <p><strong>Change:</strong>{props.change}</p>
         </div>
     </div>
 );
