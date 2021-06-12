@@ -1,0 +1,25 @@
+.crypto {
+  margin: 2px;
+  border: 1px solid red;
+  display: flex;
+
+  .image-section {
+    border: 1px solid green;
+    width: 20%;
+
+    img {
+      height: 64px;
+      width: 64px;
+    }
+  }
+
+  .data-section {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+    section {
+      display: flex;
+    }
+  }
+}
