@@ -22,14 +22,16 @@ const CryptoContainer = () => {
     }, [pageSize, offset])
 
     const pageSizeHandler = (e) => {
-        setPageSize(e.target.value)
-        setOffset(offset + e.target.value)
+        const temp = pageSize;
+        setPageSize(parseInt(e.target.value))
+        if (offset === 0) return;
+        // setOffset(offset + parseInt(e.target.value) - temp)
     }
 
-    const nextHandler = () => setOffset(pageSize + offset)
+    const nextHandler = () => setOffset(offset + parseInt(pageSize))
     const prevHandler = () => {
-        if (offset === 0) return;
-        setOffset(offset - pageSize)
+        if (offset === 0 || offset - parseInt(pageSize) < 0) setOffset(0);
+        setOffset(offset - parseInt(pageSize))
     }
 
     return (
