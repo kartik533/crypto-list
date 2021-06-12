@@ -6,6 +6,11 @@ import styles from './cryptoContainer.module.scss'
 const CryptoContainer = () => {
 
     const [cryptoData, setCryptoData] = useState([]);
+    const [pageSize, setPageSize] = useState(10);
+    const pageSizes = [10,25,50,100];
+
+    console.log(pageSize)
+
     useEffect(() => {
         axios.get('https://api.coinranking.com/v1/public/coins', {
             params: {
@@ -16,13 +21,29 @@ const CryptoContainer = () => {
         });
     }, [])
 
+    const pageSizeHandler = (e) => setPageSize(e.target.value)
+
     return (
-        <main>
-            {cryptoData.map((coin, index) => (
-                <Crypto name={coin.name} price={coin.price.slice(0,4)} symbol={coin.symbol} icon={coin.iconUrl} change={coin.change} />
-                )
-            )}
-        </main>
+        <div className={styles['crypto-container']}>
+            <section>
+                <button>prev</button>
+                <select onChange={(e) => pageSizeHandler}>
+                    {
+                        pageSizes.map((size, index) => (
+                            <option key={index}>{size}</option>
+                        ))
+                    }
+                </select>
+                <button>next</button>
+            </section>
+            <div className={styles.coins}>
+                {cryptoData.map((coin, index) => (
+                        <Crypto name={coin.name} price={coin.price.slice(0,4)} symbol={coin.symbol} icon={coin.iconUrl} change={coin.change} />
+                    )
+                )}
+            </div>
+        </div>
+
     );
 };
 

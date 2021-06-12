@@ -1,7 +1,17 @@
-main {
+.crypto-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 16px;
+
+  section, .coins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .coins {
+    flex-wrap: wrap;
+  }
+
 }
