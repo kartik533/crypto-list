@@ -10,6 +10,13 @@
     gap: 16px;
   }
 
+  section {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    background: hsl(200%,50%,90%);
+  }
+
   .coins {
     flex-wrap: wrap;
   }
