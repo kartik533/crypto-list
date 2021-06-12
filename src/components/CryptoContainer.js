@@ -27,10 +27,10 @@ const CryptoContainer = () => {
         <div className={styles['crypto-container']}>
             <section>
                 <button>prev</button>
-                <select onChange={(e) => pageSizeHandler}>
+                <select value={pageSize} onChange={(e) => pageSizeHandler(e)}>
                     {
                         pageSizes.map((size, index) => (
-                            <option key={index}>{size}</option>
+                            <option value={size} key={index}>{size}</option>
                         ))
                     }
                 </select>
