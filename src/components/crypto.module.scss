@@ -1,6 +1,7 @@
 .crypto {
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
+  flex: 1 1 0;
   min-width: 300px;
   padding: 12px;
   cursor: pointer;
@@ -19,8 +20,12 @@
   }
 
   .data-section {
-    width: 80%;
     flex-direction: column;
+
+     p {
+       line-height: 1.75;
+
+     }
   }
 
   &:hover {

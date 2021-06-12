@@ -6,7 +6,7 @@ import styles from './cryptoContainer.module.scss'
 const CryptoContainer = () => {
 
     const [cryptoData, setCryptoData] = useState([]);
-    const [pageSize, setPageSize] = useState(10);
+    const [pageSize, setPageSize] = useState(25);
     const pageSizes = [10,25,50,100];
 
     console.log(pageSize)
@@ -14,12 +14,12 @@ const CryptoContainer = () => {
     useEffect(() => {
         axios.get('https://api.coinranking.com/v1/public/coins', {
             params: {
-                limit: 10
+                limit: pageSize
             }
         }).then(({ data }) => {
             setCryptoData(data.data.coins)
         });
-    }, [])
+    }, [pageSize])
 
     const pageSizeHandler = (e) => setPageSize(e.target.value)
 

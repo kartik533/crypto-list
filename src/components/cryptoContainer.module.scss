@@ -1,16 +1,17 @@
 .crypto-container {
   display: flex;
   flex-direction: column;
+  padding: 0 16px;
   gap: 16px;
 
   section, .coins {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 16px;
   }
 
   section {
+    justify-content: center;
+    align-items: center;
     position: sticky;
     z-index: 1;
     top: 0;
