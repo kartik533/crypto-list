@@ -6,27 +6,36 @@ import styles from './cryptoContainer.module.scss'
 const CryptoContainer = () => {
 
     const [cryptoData, setCryptoData] = useState([]);
-    const [pageSize, setPageSize] = useState(25);
-    const pageSizes = [10,25,50,100];
-
-    console.log(pageSize)
+    const [pageSize, setPageSize] = useState(2);
+    const [offset, setOffset] = useState(0)
+    const pageSizes = [1,2,3,4];
 
     useEffect(() => {
         axios.get('https://api.coinranking.com/v1/public/coins', {
             params: {
-                limit: pageSize
+                limit: pageSize,
+                offset: offset
             }
         }).then(({ data }) => {
             setCryptoData(data.data.coins)
         });
-    }, [pageSize])
+    }, [pageSize, offset])
 
-    const pageSizeHandler = (e) => setPageSize(e.target.value)
+    const pageSizeHandler = (e) => {
+        setPageSize(e.target.value)
+        setOffset(offset + e.target.value)
+    }
+
+    const nextHandler = () => setOffset(pageSize + offset)
+    const prevHandler = () => {
+        if (offset === 0) return;
+        setOffset(offset - pageSize)
+    }
 
     return (
         <div className={styles['crypto-container']}>
             <section>
-                <button>prev</button>
+                <button onClick={prevHandler} disabled={offset === 0}>prev</button>
                 <select value={pageSize} onChange={(e) => pageSizeHandler(e)}>
                     {
                         pageSizes.map((size, index) => (
@@ -34,7 +43,7 @@ const CryptoContainer = () => {
                         ))
                     }
                 </select>
-                <button>next</button>
+                <button onClick={nextHandler}>next</button>
             </section>
             <div className={styles.coins}>
                 {cryptoData.map((coin, index) => (
