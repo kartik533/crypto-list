@@ -6,9 +6,9 @@ import styles from './cryptoContainer.module.scss'
 const CryptoContainer = () => {
 
     const [cryptoData, setCryptoData] = useState([]);
-    const [pageSize, setPageSize] = useState(2);
+    const [pageSize, setPageSize] = useState(10);
     const [offset, setOffset] = useState(0)
-    const pageSizes = [1,2,3,4];
+    const pageSizes = [10,25,50,100];
 
     useEffect(() => {
         axios.get('https://api.coinranking.com/v1/public/coins', {
@@ -24,13 +24,16 @@ const CryptoContainer = () => {
     const pageSizeHandler = (e) => {
         const temp = pageSize;
         setPageSize(parseInt(e.target.value))
-        if (offset === 0) return;
+        // if (offset === 0) return;
         // setOffset(offset + parseInt(e.target.value) - temp)
     }
 
     const nextHandler = () => setOffset(offset + parseInt(pageSize))
     const prevHandler = () => {
-        if (offset === 0 || offset - parseInt(pageSize) < 0) setOffset(0);
+        if (offset === 0 || offset - parseInt(pageSize) < 0) {
+            setOffset(0);
+            return;
+        }
         setOffset(offset - parseInt(pageSize))
     }
 
